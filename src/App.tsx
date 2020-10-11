@@ -31,7 +31,7 @@ const App = () => {
         <div className="button-like">本を追加</div>
       </section>
       <section className="main">
-        <h1>チュートリアルを始めましょう</h1>
+        <h1>React Hooksチュートリアルを始めましょう</h1>
       </section>
     </div>
   );
