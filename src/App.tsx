@@ -1,25 +1,25 @@
-import React from "react";
-import "./App.css";
-import { BookToRead } from "./BookToRead";
+import React from 'react';
+import './App.css';
+import { BookToRead } from './BookToRead';
 
 const dummyBooks: BookToRead[] = [
   {
     id: 1,
-    title: "はじめてのReact",
-    authors: "ダミー",
-    memo: ""
+    title: 'プログラミングTypeScript',
+    authors: 'ダミー',
+    memo: ''
   },
   {
     id: 2,
-    title: "React Hooks入門",
-    authors: "ダミー",
-    memo: ""
+    title: '現場で使えるRuby on Rails5 速習実践ガイド',
+    authors: 'ダミー',
+    memo: ''
   },
   {
     id: 3,
-    title: "実践Reactアプリケーション開発",
-    authors: "ダミー",
-    memo: ""
+    title: 'SQL第２版　ゼロからはじめるデータベース操作',
+    authors: 'ダミー',
+    memo: ''
   }
 ];
 
