@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { BookDescription } from './BookDescription';
 import BookSearchItem from './BookSearchItem';
+import { useBookData } from './useBookData';
 
 type BookSearchDialogProps = {
   maxResults: number;
@@ -8,24 +9,19 @@ type BookSearchDialogProps = {
 };
 
 const BookSearchDialog = (props: BookSearchDialogProps) => {
-  const [books, setBooks] = useState([] as BookDescription[]);
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
-
-  const handleTitleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
-  };
-
-  const handleAuthorInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAuthor(e.target.value);
-  };
+  const titleRef = useRef<HTMLInputElement>(null);
+  const authorRef = useRef<HTMLInputElement>(null);
+  const books = useBookData(title, author, props.maxResults);
 
   const handleSearchClick = () => {
-    if (!title && !author) {
+    if (!titleRef.current!.value && !authorRef.current!.value) {
       alert('条件を入力してください');
       return;
     }
-    // 検索実行
+    titleRef.current && setTitle(titleRef.current!.value);
+    authorRef.current && setAuthor(authorRef.current!.value);
   };
 
   const handleBookAdd = (book: BookDescription) => {
@@ -46,16 +42,8 @@ const BookSearchDialog = (props: BookSearchDialogProps) => {
     <div className="dialog">
       <div className="operation">
         <div className="conditions">
-          <input
-            type="text"
-            onChange={handleTitleInputChange}
-            placeholder="タイトルで検索"
-          />
-          <input
-            type="text"
-            onChange={handleAuthorInputChange}
-            placeholder="著者名で検索"
-          />
+          <input type="text" ref={titleRef} placeholder="タイトルで検索" />
+          <input type="text" ref={authorRef} placeholder="著者名で検索" />
         </div>
         <div className="button-like" onClick={handleSearchClick}>
           検索

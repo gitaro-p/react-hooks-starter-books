@@ -33,7 +33,7 @@ const BookRow = (props: BookRowProps) => {
         onChange={handleMemoChange}
       />
       <div className="delete-row" onClick={handleDeleteClick}>
-        削除
+        ??
       </div>
     </div>
   );
