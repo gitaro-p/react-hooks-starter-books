@@ -54,7 +54,7 @@ const App = () => {
     <div className="App">
       <section className="nav">
         <h1>読みたい本リスト</h1>
-        <div className="button-like">本を追加</div>
+        <div className="button-like">本の追加</div>
       </section>
       <section className="main">{bookRows}</section>
     </div>
